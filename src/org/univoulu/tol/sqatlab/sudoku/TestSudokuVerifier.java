@@ -61,4 +61,29 @@ public class TestSudokuVerifier {
 		assertEquals(sudokuVerifier
 				.verify("417469825632158947958724316825437169791586432346912758289643571573291684164875293"), -3);
 	}
+	
+	@Test
+	public void firstElementInFirstColumnIsEqualSecond() {
+		assertEquals(sudokuVerifier
+				.verify("417469825432158947958724316825437169791586432346912758289643571573291684164875293"), -4);
+	}
+	
+	@Test
+	public void firstElementInFirstColumnIsEqualThird() {
+		assertEquals(sudokuVerifier
+				.verify("417469825632158947458724316825437169791586432346912758289643571573291684164875293"), -4);
+	}
+	
+	@Test
+	public void firstElementInFirstColumnIsEqualFourth() {
+		assertEquals(sudokuVerifier
+				.verify("417469825632158947958724316425437169791586432346912758289643571573291684164875293"), -4);
+	}
+	
+	@Test
+	public void firstElementInFirstColumnIsEqualFifth() {
+		assertEquals(sudokuVerifier
+				.verify("417469825632158947958724316825437169491586432346912758289643571573291684164875293"), -4);
+	}
+	
 }
