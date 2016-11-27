@@ -12,15 +12,6 @@ public class SudokuVerifier {
 			}
 		}
 		
-		/*
-		if(isInvalidDigit(candidateSolutionArray[0])) {
-			result = -1;
-		} else if(isInvalidDigit(candidateSolutionArray[1])) {
-			result = -1;
-		} else if(isInvalidDigit(candidateSolutionArray[2])) {
-			result = -1;
-		}*/
-		
 		return result;
 	}
 	
