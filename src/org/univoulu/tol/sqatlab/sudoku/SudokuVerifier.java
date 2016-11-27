@@ -6,12 +6,29 @@ public class SudokuVerifier {
 		int result = 0;
 		char[] candidateSolutionArray = candidateSolution.toCharArray();
 		
-		if(candidateSolutionArray[0] < '1' || candidateSolutionArray[0] > '9') {
+		for(int i = 0; i < 81; i++) {
+			if(isInvalidDigit(candidateSolutionArray[i])) {
+				result = -1;
+			}
+		}
+		
+		/*
+		if(isInvalidDigit(candidateSolutionArray[0])) {
 			result = -1;
-		} else if(candidateSolutionArray[1] < '1' || candidateSolutionArray[1] > '9') {
+		} else if(isInvalidDigit(candidateSolutionArray[1])) {
 			result = -1;
-		} else if(candidateSolutionArray[2] < '1' || candidateSolutionArray[2] > '9') {
+		} else if(isInvalidDigit(candidateSolutionArray[2])) {
 			result = -1;
+		}*/
+		
+		return result;
+	}
+	
+	private boolean isInvalidDigit(char candidateSolution) {
+		boolean result = false;
+		
+		if(candidateSolution < '1' || candidateSolution > '9') {
+			result = true;
 		}
 		
 		return result;
