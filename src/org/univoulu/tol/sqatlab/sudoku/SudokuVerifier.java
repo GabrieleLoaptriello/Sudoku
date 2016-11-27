@@ -3,11 +3,17 @@ package org.univoulu.tol.sqatlab.sudoku;
 public class SudokuVerifier {
 
 	public int verify(String candidateSolution) {
-		// Return 0: means it is a valid Sudoku solution
-		// Return -1: means it is violating Rule #1
-		// Return -2: means it is violating Rule #2
-		// Return -3: means it is violating Rule #3
-		// Return -4: means it is violating Rule #4
-		return 0;
+		int result = 0;
+		char[] candidateSolutionArray = candidateSolution.toCharArray();
+		
+		if(candidateSolutionArray[0] < '1' || candidateSolutionArray[0] > '9') {
+			result = -1;
+		} else if(candidateSolutionArray[1] < '1' || candidateSolutionArray[1] > '9') {
+			result = -1;
+		} else if(candidateSolutionArray[2] < '1' || candidateSolutionArray[2] > '9') {
+			result = -1;
+		}
+		
+		return result;
 	}
 }
