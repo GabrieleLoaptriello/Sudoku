@@ -8,7 +8,8 @@ public class SudokuVerifier {
 		int splitRow = 9;
 		int columnSplit = 9;
 		int column = 0; // indice del primo elemento della colonna
-		int columnIndex = columnSplit; // indice che scorrerà gli elementi della colonna
+		int columnIndex = columnSplit; // indice che scorrerà gli elementi della
+										// colonna
 		char[] candidateSolutionArray = candidateSolution.toCharArray();
 
 		for (int i = 0; i < 81; i++) {
@@ -29,11 +30,11 @@ public class SudokuVerifier {
 		}
 
 		while (columnIndex <= 72) {
-			
+
 			if (candidateSolutionArray[0] == candidateSolutionArray[columnIndex]) {
 				result = -4;
 			}
-			columnIndex +=columnSplit;
+			columnIndex += columnSplit;
 		}
 
 		/*
