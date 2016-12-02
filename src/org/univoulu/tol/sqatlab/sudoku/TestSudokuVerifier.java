@@ -112,7 +112,27 @@ public class TestSudokuVerifier {
 	public void firstElementInSecondSubGridIsEqualThird() {
 		assertEquals(sudokuVerifier.verify("417363825632158947958724316825437169791586432346912758289643571573291684164875293"), -2);
 	}
+	
+	@Test
+	public void firstElementInSecondSubGridIsEqualFourth() {
+		assertEquals(sudokuVerifier.verify("417369825632358947958724316825437169791586432346912758289643571573291684164875293"), -2);
+	}
+	
+	@Test
+	public void firstElementInSecondSubGridIsEqualFifth() {
+		assertEquals(sudokuVerifier.verify("417369825632138947958724316825437169791586432346912758289643571573291684164875293"), -2);
+	}
+	
+	@Test
+	public void firstElementInSecondSubGridIsEqualSixth() {
+		assertEquals(sudokuVerifier.verify("417369825632153947958724316825437169791586432346912758289643571573291684164875293"), -2);
+	}
 
+	@Test
+	public void firstElementInSecondSubGridIsEqualSeventh() {
+		assertEquals(sudokuVerifier.verify("417369825632158947958324316825437169791586432346912758289643571573291684164875293"), -2);
+	}
+	
 	/*
 	 * @Test public void firstElementInFirstRowIsEqualSecond() {
 	 * 

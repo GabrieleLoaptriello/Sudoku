@@ -16,11 +16,11 @@ import java.util.List;
  * | 2 8 9 | 6 4 3 | 5 7 1 | 6 
  * | 5 7 3 | 2 9 1 | 6 8 4 | 7
  * | 1 6 4 | 8 7 5 | 2 9 3 | 8
- * | —--------------------|
+ * | —---------------------|
  */
 
 public class SudokuVerifier {
-
+	
 	public int verify(String candidateSolution) {
 		final int LAST_ROW_INDEX = 8;
 
@@ -40,21 +40,9 @@ public class SudokuVerifier {
 			}
 		}
 
-		char[] firstSubGrid = getSubGrid(candidateSolutionArray);
-
-		for (int j = 0; j < 8; j++)
-			for (int i = j + 1; i < 9; i++) {
-				if (firstSubGrid[j] == firstSubGrid[i] && result != -1) {
-					result = -2;
-				}
-			}
+		result = checkSecondRule(candidateSolutionArray, result);
 		
-		if(candidateSolutionArray[3] == candidateSolutionArray[4]) {
-			result = -2;
-		} else if(candidateSolutionArray[3] == candidateSolutionArray[5]) {
-			result = -2;
-		}
-
+		
 		/*
 		 * while (row < 81) { for (int i = row; i < row + LAST_ROW_INDEX; i++) {
 		 * for (int j = i + 1; j < row + splitRow; j++) { if
@@ -83,21 +71,41 @@ public class SudokuVerifier {
 		return (candidateSolution < '1' || candidateSolution > '9') ? true : false;
 	}
 
-	private char[] getSubGrid(char[] array) {
+	private char[] getSubGrid(char[] array, int start) {
 		char[] subGrid = new char[9];
-		int j = 0;
-		int[] limitList = { 2, 11, 20 };
-		int k = 0;
+		int j = start;
+		int limitList = start + 2;
 		int i = 0;
 
-		while (j <= 20) {
+		while (j <= start + 20){
 			subGrid[i++] = array[j];
-			if (j == limitList[k]) {
+			if (j == limitList) {
 				j += 6;
-				k++;
+				limitList += 9;
 			}
 			j++;
 		}
 		return subGrid;
+	}
+	
+	private int checkSubGrid(char[] subGrid, int result) {
+		
+		for (int j = 0; j < 8; j++)
+			for (int i = j + 1; i < 9; i++) {
+				if (subGrid[j] == subGrid[i] && result != -1) {
+					result = -2;
+				}
+			}
+		
+		return result;
+	}
+	
+	private int checkSecondRule(char[] candidateSolution, int result) {
+		for(int i = 0; i <= 24; i += 3) {
+			char[] subGrid = getSubGrid(candidateSolution, i);
+			result = checkSubGrid(subGrid, result);
+		}
+		
+		return result;
 	}
 }
