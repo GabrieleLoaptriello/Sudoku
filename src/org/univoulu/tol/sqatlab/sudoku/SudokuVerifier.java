@@ -20,7 +20,7 @@ import java.util.List;
  */
 
 public class SudokuVerifier {
-	
+
 	public int verify(String candidateSolution) {
 		final int LAST_ROW_INDEX = 8;
 
@@ -41,8 +41,7 @@ public class SudokuVerifier {
 		}
 
 		result = checkSecondRule(candidateSolutionArray, result);
-		
-		
+
 		/*
 		 * while (row < 81) { for (int i = row; i < row + LAST_ROW_INDEX; i++) {
 		 * for (int j = i + 1; j < row + splitRow; j++) { if
@@ -77,7 +76,7 @@ public class SudokuVerifier {
 		int limitList = start + 2;
 		int i = 0;
 
-		while (j <= start + 20){
+		while (j <= start + 20) {
 			subGrid[i++] = array[j];
 			if (j == limitList) {
 				j += 6;
@@ -87,25 +86,25 @@ public class SudokuVerifier {
 		}
 		return subGrid;
 	}
-	
+
 	private int checkSubGrid(char[] subGrid, int result) {
-		
+
 		for (int j = 0; j < 8; j++)
 			for (int i = j + 1; i < 9; i++) {
 				if (subGrid[j] == subGrid[i] && result != -1) {
 					result = -2;
 				}
 			}
-		
+
 		return result;
 	}
-	
+
 	private int checkSecondRule(char[] candidateSolution, int result) {
-		for(int i = 0; i <= 24; i += 3) {
+		for (int i = 0; i <= 24; i += 3) {
 			char[] subGrid = getSubGrid(candidateSolution, i);
 			result = checkSubGrid(subGrid, result);
 		}
-		
+
 		return result;
 	}
 }
